@@ -1,0 +1,16 @@
+{% extends 'NewsAgg/layout.html' %}
+{% block body %}	
+	{% for list in articles %}
+		<div class="container">
+			<hr>
+			<h3> {{list.title}} </h3>
+			<p>{{list.description}}</p>
+			<p>{{list.content}}</p>
+			<a href="{{list.url}}">URL</a>
+			<date>{{list.publishedAt}}</date>
+			<!--img src="{{list.urlToImage}}"-->
+			<hr>
+		</div>
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>News Aggregator</title>
+<style type="text/css">
+	*
+	{
+		font-family: verdana;
+		margin: 0px;
+	}
+	body{
+		background-color: #00ff00;
+		margin: 0px;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+	footer, header{	
+		text-align: center;
+		background-color: #555;
+		display: block;
+		padding: 10px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-bottom: 0px;
+		width: 100%;
+		list-style: none;
+
+	}
+	footer
+	{
+		margin: 0px;
+		bottom: 0px;
+		right: 0px;
+	}
+	h1{
+		margin-bottom: 10px;
+		text-align: center;
+		padding: 2px;
+		text-align: inline-block;
+		
+	}
+	header h1
+	{
+		color: Gold;
+		display: inline-block;
+	}
+	.container{
+		background-color: #fff;
+		padding: 20px;
+	}
+	header a
+	{
+		text-decoration: none;
+		margin-top: 1px;
+		font-size: 20px;
+		color: #fff;
+		padding: 10px;
+	}
+	header a:hover{
+		background-color: #121212;
+	}
+</style>
+</head>
+<body>
+		
+		<header>
+			<h1>News Aggregator</h1>	
+			<a href="{% url 'index' %}">Home</a>
+			<a href="{% url 'sports' %}">Sports</a>
+		</header>
+	{% block body %}
+		
+	{% endblock %}
+	<footer>
+		<p>
+			Facebook <br> Twitter	
+		</p>
+		<br>
+		<p>&copy; Muhammad Shahbaz.</p>
+	</footer>
+</body>
+</html>
