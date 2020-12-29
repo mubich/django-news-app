@@ -16,7 +16,6 @@
 		padding-right: 50px;
 	}
 	footer, header{	
-		text-align: center;
 		background-color: #555;
 		display: block;
 		padding: 10px;
@@ -27,8 +26,14 @@
 		list-style: none;
 
 	}
+	header{
+		display: flex;
+		/*text-align: justify;*/
+		justify-content: space-around;
+	}
 	footer
 	{
+		text-align: center;
 		margin: 0px;
 		bottom: 0px;
 		right: 0px;
@@ -66,8 +71,9 @@
 		
 		<header>
 			<h1>News Aggregator</h1>	
-			<a href="{% url 'index' %}">Home</a>
+			<a href="{% url 'index' %}">Daily Times</a>
 			<a href="{% url 'sports' %}">Sports</a>
+			<a href="{% url 'thenews' %}">The News</a>
 		</header>
 	{% block body %}
 		

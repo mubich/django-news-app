@@ -1,0 +1,17 @@
+{% extends 'NewsAgg/layout.html' %}
+
+{% block body %}
+	
+	<div class="container">
+		<h1> {{ tn_h1 }} </h1>
+		<img src="{{ tn_sd_img_src }}" width="98%" height="400" style="padding: 0px">
+		<article>
+			{% for p in tn_p %}
+				<br><br>
+				{{ p }}
+			{% endfor %}
+			
+		</article>
+	</div>
+		
+{% endblock %}

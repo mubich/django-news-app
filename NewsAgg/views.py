@@ -5,7 +5,11 @@ import bs4
 import requests
 import json
 
-dt_req = requests.get('https://dailytimes.com.pk')
+try:
+	dt_req = requests.get('https://dailytimes.com.pk', verify = False)
+except:
+	print("request dailytimes failed")
+
 soup = bs4.BeautifulSoup(dt_req.content, 'html.parser')
 hero_entry = soup.find('article', class_="entry hero-entry")
 req_h_url = hero_entry.a['href']
@@ -64,3 +68,42 @@ def sports(request):
 	{
 		'articles': articles
 	})
+
+"""TheNews part"""
+try:
+	tn_req = requests.get("https://www.thenews.com.pk/", verify = False)
+except:
+	print("request to thenews failed.")
+
+tn_soup = bs4.BeautifulSoup(tn_req.content, 'html.parser')
+
+main_story_left = tn_soup.find('div', class_ = "main_story_left")
+
+url_main = main_story_left.a['href']
+
+try:
+	main_req = requests.get(url_main, verify = False)
+except:
+	print("request to thenews main-page failed.")
+
+main_req = bs4.BeautifulSoup(main_req.content, 'html.parser')
+
+dc = main_req.find('div', class_ = 'detail-center')
+
+tn_h1 = dc.h1.text
+
+tn_story_detail = dc.find('div', class_ = 'story-detail')
+
+tn_sd_img_src = tn_story_detail.img['src'];
+
+tn_p = tn_story_detail.find_all('p');
+tn_pt = []
+for p in tn_p:
+	tn_pt.append(p.text)
+#tn_pt = tn_pt[4:-1]
+def the_news(request):
+	return render(request, 'NewsAgg/the_news.html', {
+		'tn_h1' : tn_h1,
+		'tn_sd_img_src' : tn_sd_img_src,
+		'tn_p' : tn_pt 
+		})
